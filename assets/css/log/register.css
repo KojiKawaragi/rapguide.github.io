@@ -11,3 +11,29 @@ body {
   background: #ffffff;
   overflow-x: hidden;
 }
+
+.navbar .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10 20px;
+  background-color: #fff;
+}
+
+.navbar h2[data-text="Capstone Project"] {
+    background-color: #f39233; 
+    color: white;
+    display: table;        
+    margin: 20px 0;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    justify-content: start;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid white;
+    width: 0;
+}
