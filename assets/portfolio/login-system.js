@@ -1,78 +1,67 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. REGISTRATION PAGE LOGIC ---
-    const registerForm = document.getElementById('register-form');
-    
-    if (registerForm) {
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Stop page from refreshing
+// Utility: Show toast notifications (uses your CSS classes)
+function showToast(message, type) {
+    const toast = document.getElementById('notification');
+    toast.textContent = message;
+    toast.className = `toast ${type} show`;
+    setTimeout(() => toast.classList.remove('show'), 3000); // Auto-hide after 3 seconds
+}
 
-            // Collect User Data
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const email = document.getElementById('email').value;
+// Utility: Get users from localStorage (simulates database)
+function getUsers() {
+    return JSON.parse(localStorage.getItem('users')) || {};
+}
 
-            // Check if user already exists
-            if (localStorage.getItem(username)) {
-                alert("This username is already taken. Try another one!");
-                return;
-            }
+// Utility: Save users to localStorage
+function saveUsers(users) {
+    localStorage.setItem('users', JSON.stringify(users));
+}
 
-            // The "Only Letters" Algorithm (Regular Expression)
-            // ^ = start, [A-Za-z] = letters only, + = one or more, $ = end
-            const letterOnlyRegex = /^[A-Za-z]+$/;
+// Handle login form submission (for profile-login.html)
+if (document.getElementById('login-form')) {
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        const users = getUsers();
 
-            // 1. Check for symbols or numbers
-            if (!letterOnlyRegex.test(password)) {
-                alert("Invalid Password! Numbers and symbols are not allowed.");
-            return; // Stop the registration
+        if (users[username] && users[username].password === password) {
+            showToast('Login successful! Redirecting...', 'success');
+            // Simulate redirect (replace with your actual dashboard URL, e.g., '../dashboard.html')
+            setTimeout(() => window.location.href = '../dashboard.html', 1000);
+        } else {
+            showToast('Invalid username or password.', 'error');
         }
-
-            // 2. Check length (just in case)
-            if (password.length > 12) {
-                alert("Password is too long! Maximum 12 characters.");
-            return;
-        }
-
-        // If it passes both, proceed to save...
-        const userData = { username, password, email };
-        localStorage.setItem(username, JSON.stringify(userData));
-    
-        alert("Success! Redirecting to login...");
-        window.location.href = "profile-login.html";
     });
 }
 
-    // --- 2. LOGIN PAGE LOGIC ---
-    const loginForm = document.getElementById('login-form');
-    
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+// Handle register form submission (for profile-register.html)
+if (document.getElementById('register-form')) {
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        const email = document.getElementById('email').value.trim();
+        const users = getUsers();
 
-            const usernameInput = document.getElementById('username').value;
-            const passwordInput = document.getElementById('password').value;
+        // Basic validation
+        if (!username || !password || !email) {
+            showToast('Please fill in all fields.', 'error');
+            return;
+        }
+        if (users[username]) {
+            showToast('Username already exists. Try a different one.', 'error');
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showToast('Please enter a valid email.', 'error');
+            return;
+        }
 
-            // Fetch user from storage
-            const storedUser = localStorage.getItem(usernameInput);
-
-            if (storedUser) {
-                const user = JSON.parse(storedUser);
-
-                // Verify Password
-                if (user.password === passwordInput) {
-                    // Start a Session
-                    sessionStorage.setItem('isLoggedIn', 'true');
-                    sessionStorage.setItem('currentUser', user.username);
-
-                    alert("Welcome, " + user.username + "!");
-                    window.location.href = "../../index.html"; // Go to main landing page
-                } else {
-                    alert("Incorrect password. Please try again.");
-                }
-            } else {
-                alert("Account not found. Please sign up first.");
-            }
-        });
-    }
-});
-
+        // Register user
+        users[username] = { password, email };
+        saveUsers(users);
+        showToast('Registration successful! You can now log in.', 'success');
+        // Optional: Auto-redirect to login page
+        setTimeout(() => window.location.href = '../portfolio/profile-login.html', 1000);
+    });
+}
