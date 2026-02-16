@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    /* Updated to a smoother golden-brown gradient to match the image */
+    background: linear-gradient(135deg, #bc7112 0%, #7c410c 50%, #4a2707 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* 2. Sleek Navbar */
+.navbar {
+    width: 100%;
+    padding: 20px 50px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h2[data-text="Capstone Project"] {
+    font-size: 1.2rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.login-btn {
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid orange;
+    padding: 8px 25px;
+    left: 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+/* 3. The Glassmorphic Login Card */
+.register-page { /* Changed from .register-page to match your login HTML */
+    margin: auto;
+    background: rgba(255, 255, 255, 0.05); /* Very subtle transparency */
+    padding: 20px 30px;
+    border-radius: 50px; /* Increased rounding to match image */
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px); /* Stronger blur for that frosted look */
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.register-page h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+}
+
+/* 4. Form Styling */
+.form-group {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    padding: 5px;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08); /* Darker input background */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    color: #fff;
+    transition: 0.3s;
+    outline: none;
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 5. The "Login" Button */
+button {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid rgba(255, 165, 0, 0.5); /* Soft orange border */
+    border-radius: 20px;
+    background: transparent;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: rgba(255, 165, 0, 0.1);
+    border-color: #ffa500;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+}
+
+.register-page p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 30px;
+    font-size: 0.9rem;
+}
+
+/* --- REGISTER MOBILE ALIGNMENT --- */
+@media (max-width: 480px) {
+    
+    /* 1. Navbar: Maintain slim profile */
+    .navbar .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 5%;
+    }
+
+    .navbar h2.title {
+        font-size: 0.9rem; /* Slightly smaller to prevent overlap */
+        white-space: nowrap;
+    }
+
+    .login-btn {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+
+    /* 2. Registration Card: Responsive width & height */
+    .register-page {
+        width: 92%;
+        margin: 80px auto 40px; /* Space for fixed nav + bottom margin */
+        padding: 35px 25px;
+        border-radius: 25px;
+        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 107, 53, 0.2);
+    }
+
+    .register-page h1 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    /* 3. Form Spacing: Better vertical flow */
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px; /* Adds space between label and input */
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+        margin-top: 10px;
+        text-align: left;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 1rem;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+
+    /* 4. Full-Width Submit Button */
+    button[type="submit"] {
+        width: 100%;
+        padding: 15px;
+        margin-top: 25px;
+        font-size: 1rem;
+        border-radius: 15px;
+        background: linear-gradient(45deg, #7c410c, #ff6b35);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+}
