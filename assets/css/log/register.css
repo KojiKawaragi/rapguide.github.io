@@ -134,6 +134,25 @@ button:hover {
     font-size: 0.9rem;
 }
 
+/* Toast notification styles */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    display: none;
+    z-index: 1000;
+    transition: opacity 0.5s;
+    font-family: Poppins, sans-serif;
+    max-width: 300px;
+}
+
+.success { background: #4CAF50; }
+.error { background: #f44336; }
+.show { display: block; opacity: 1; }
+
 /* --- REGISTER MOBILE ALIGNMENT --- */
 @media (max-width: 480px) {
     
@@ -205,4 +224,5 @@ button:hover {
         background: linear-gradient(45deg, #7c410c, #ff6b35);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
+
 }
