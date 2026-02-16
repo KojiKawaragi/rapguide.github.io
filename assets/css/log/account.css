@@ -136,6 +136,25 @@ button:hover {
     margin-top: 20px;
 }
 
+/* Toast notification styles */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    display: none;
+    z-index: 1000;
+    transition: opacity 0.5s;
+    font-family: Poppins, sans-serif;
+    max-width: 300px;
+}
+
+.success { background: #4CAF50; }
+.error { background: #f44336; }
+.show { display: block; opacity: 1; }
+
 /* --- LOGIN MOBILE ALIGNMENT --- */
 @media (max-width: 480px) {
     
@@ -183,4 +202,5 @@ button:hover {
         font-size: 0.8rem;
         line-height: 1.4;
     }
+
 }
