@@ -456,6 +456,50 @@ section.title::before {
     transform: scale(1.2) rotate(10deg);
 }
 
+To give your Quiz button a vibrant, "action-oriented" look, we can use a transparent border that fills in on hover, or a solid orange theme.
+
+Here is the CSS to create a clean orange-bordered button that fills with an orange background when the user hovers over it.
+
+The CSS Styling
+CSS
+/* Base style for the Quiz button */
+.btn-action.quiz-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    
+    /* Orange Border Style */
+    background-color: transparent;
+    border: 2px solid #FF8C00; /* Dark Orange */
+    color: #FF8C00;
+    
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Icon style */
+.quiz-btn i {
+    font-size: 1.1rem;
+}
+
+/* Hover Effect: Orange Background */
+.quiz-btn:hover {
+    background-color: #FF8C00;
+    color: #ffffff; /* Text turns white for contrast */
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3); /* Soft orange glow */
+    transform: translateY(-2px);
+}
+
+/* Active/Click Effect */
+.quiz-btn:active {
+    transform: translateY(0);
+}
+
 #about .text p {
     border-left: 2px solid #ff6b35;
     padding-left: 15px;
@@ -883,4 +927,5 @@ section.title::before {
     .toast {
         animation: slideInMobile 0.4s ease-out;
     }
+
 };
